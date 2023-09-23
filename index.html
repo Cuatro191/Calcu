@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body> 
+    <div class="container">
+    <h2>Calculadora</h2>
+    <input type="text" id="resultado" readonly><br><br>
+    <input type="button" value="1" onclick="agregarNumero(1)">
+    <input type="button" value="2" onclick="agregarNumero(2)">
+    <input type="button" value="3" onclick="agregarNumero(3)">
+    <input type="button" value="+" onclick="agregarOperacion('+')"><br>
+    <input type="button" value="4" onclick="agregarNumero(4)">
+    <input type="button" value="5" onclick="agregarNumero(5)">
+    <input type="button" value="6" onclick="agregarNumero(6)">
+    <input type="button" value="-" onclick="agregarOperacion('-')"><br>
+    <input type="button" value="7" onclick="agregarNumero(7)">
+    <input type="button" value="8" onclick="agregarNumero(8)">
+    <input type="button" value="9" onclick="agregarNumero(9)">
+    <input type="button" value="*" onclick="agregarOperacion('*')"><br>
+    <input type="button" value="C" onclick="limpiar()">
+    <input type="button" value="0" onclick="agregarNumero(0)">
+    <input type="button" value="=" onclick="calcular()">
+    <input type="button" value="/" onclick="agregarOperacion('/')"><br>
+    </div>
+    <script>
+        let operacion = '';
+        let num1 = '';
+        let num2 = '';
+        
+        const agregarNumero = (numero) => {
+            document.getElementById('resultado').value += numero;
+        }
+        
+        const agregarOperacion = (op) => {
+            operacion = op;
+            num1 = document.getElementById('resultado').value;
+            document.getElementById('resultado').value = '';
+        }
+        
+        const calcular = () => {
+            num2 = document.getElementById('resultado').value;
+            let resultado;
+            switch (operacion) {
+                case '+':
+                resultado = parseInt(num1) + parseInt(num2);
+                break;
+                case '-':
+                resultado = parseInt(num1) - parseInt(num2);
+                break;
+                case '*':
+                resultado = parseInt(num1) * parseInt(num2);
+                break;
+                case '/':
+                resultado = parseInt(num1) / parseInt(num2);
+                break;
+            }
+            document.getElementById('resultado').value = resultado;
+        }
+        
+        const limpiar = () => {
+            document.getElementById('resultado').value = '';
+            operacion = '';
+            num1 = '';
+            num2 = '';
+        }
+    </script>
+</body>
+</html>
